@@ -1,0 +1,18 @@
+# EN: Ignore Python virtual environments
+# JP: Python の仮想環境を無視します
+.venv/
+backend/.venv/
+
+# EN: Ignore Python cache files
+# JP: Python のキャッシュファイルを無視します
+__pycache__/
+*.pyc
+
+# EN: Ignore environment variable files
+# JP: 環境変数ファイルを無視します
+.env
+backend/.env
+
+# EN: Ignore macOS system files
+# JP: macOS のシステムファイルを無視します
+.DS_Store
