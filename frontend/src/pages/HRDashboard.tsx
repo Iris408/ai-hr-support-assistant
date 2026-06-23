@@ -1,6 +1,8 @@
 // @ts-ignore: importing JS module without declaration file
 import { StatCard } from "../components/StatCard";
 import { TicketTable } from "../components/TicketTable";
+import { TicketReviewPanel } from "../components/TicketReviewPanel";
+
 import type { Ticket } from "../types/ticket";
 
 type HRDashboardProps = {
@@ -77,6 +79,8 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
           </div>
         </article>
       </section>
+
+      <TicketReviewPanel tickets={tickets} />
 
       <TicketTable tickets={tickets} />
     </section>

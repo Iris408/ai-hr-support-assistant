@@ -540,4 +540,121 @@ button {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .review-panel {
+    margin-bottom: 28px;
+  }
+
+  .review-panel-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .review-panel-header h3 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+  }
+
+  .review-panel-header p {
+    max-width: 720px;
+    margin: 0;
+    color: #737b8c;
+    line-height: 1.6;
+  }
+
+  .review-panel-header span {
+    flex-shrink: 0;
+    border: 1px solid #d8deea;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #5f6878;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    font-weight: 900;
+  }
+
+  .review-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .review-card {
+    border: 1px solid #e0e4ec;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+  }
+
+  .review-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .review-card h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .review.message {
+    margin: 0 0 16px;
+    color: #5f6878;
+    line-height: 1.6;
+  }
+
+  .review-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .ai-response-box,
+  .ai-note-box {
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .ai-response-box {
+    margin-bottom: 12px;
+    background: #edf5ff;
+    border: 1px solid #d4e6fb;
+  }
+
+  .ai-note-box {
+    background: #f8f1ff;
+    border: 1px solid #eadcff;
+  }
+
+  .ai-response-box h5,
+  .ai-note-box h5 {
+    margin: 0;
+    color: #101423;
+    font-size: 0.86rem;
+  }
+
+  .ai-response-box p,
+  .ai-note-box p {
+    margin: 0;
+    color: #5f6878;
+    line-height: 1.6;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 980px) {
+    .review-card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .review-panel-header {
+      flex-direction: column;
+    }
+  }
 }
