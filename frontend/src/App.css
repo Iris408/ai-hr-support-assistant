@@ -1,12 +1,27 @@
+/* =========================================
+   Global styles
+========================================= */
+
 * {
   box-sizing: border-box;
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
 body,
 #root {
   margin: 0;
-  background: #b7c0d1;
+  min-height: 100%;
+}
+
+body {
+  background: #f5f7fb;
   color: #101423;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -22,6 +37,10 @@ button {
   cursor: pointer;
 }
 
+/* =========================================
+   Main dashboard layout
+========================================= */
+
 .dashboard-shell {
   display: grid;
   grid-template-columns: 230px 1fr;
@@ -29,14 +48,28 @@ button {
   min-height: 100vh;
   margin: 0;
   overflow: hidden;
-  border-radius: 0;
   background: #f5f7fb;
-  box-shadow: none;
 }
+
+.dashboard-main {
+  min-width: 0;
+  overflow: auto;
+  background: #f5f7fb;
+  text-align: left;
+}
+
+.page-content {
+  padding: 30px 36px 38px;
+}
+
+/* =========================================
+   Sidebar
+========================================= */
 
 .sidebar {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   padding: 28px 20px;
   background: #ffffff;
   border-right: 1px solid #e1e5ee;
@@ -100,10 +133,23 @@ button {
   font-size: 0.82rem;
 }
 
-.dashboard-main {
-  min-width: 0;
-  background: #f5f7fb;
+.sidebar-top-row {
+  display: block;
 }
+
+.mobile-menu-button {
+  display: none;
+  border: 1px solid #d8deea;
+  border-radius: 10px;
+  background: #f8faff;
+  color: #0b63ce;
+  padding: 8px 12px;
+  font-weight: 900;
+}
+
+/* =========================================
+   Topbar
+========================================= */
 
 .topbar {
   display: flex;
@@ -126,6 +172,7 @@ button {
 
 .topbar h1 {
   margin: 0;
+  color: #101423;
   font-size: 1.15rem;
 }
 
@@ -150,15 +197,15 @@ button {
 
 .language-pill {
   padding: 6px 10px;
+  border: 1px solid #e1e5ee;
   border-radius: 999px;
   background: #ffffff;
   color: #101423;
-  border: 1px solid #e1e5ee;
 }
 
-.page-content {
-  padding: 30px 36px 38px;
-}
+/* =========================================
+   Page headings
+========================================= */
 
 .dashboard-heading {
   margin-bottom: 24px;
@@ -166,6 +213,7 @@ button {
 
 .dashboard-heading h2 {
   margin: 0 0 8px;
+  color: #101423;
   font-size: 1.75rem;
 }
 
@@ -176,6 +224,10 @@ button {
   line-height: 1.6;
 }
 
+/* =========================================
+   Overview cards / stats
+========================================= */
+
 .overview-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.9fr);
@@ -184,9 +236,6 @@ button {
 }
 
 .large-panel,
-.table-card,
-.request-card,
-.empty-card,
 .stat-card {
   border: 1px solid #e0e4ec;
   border-radius: 12px;
@@ -209,6 +258,7 @@ button {
 
 .panel-title-row h3 {
   margin: 0;
+  color: #101423;
 }
 
 .panel-title-row span {
@@ -240,6 +290,7 @@ button {
 
 .eligibility-layout h4 {
   margin: 0 0 8px;
+  color: #101423;
 }
 
 .eligibility-layout p {
@@ -305,8 +356,11 @@ button {
 .mini-metrics,
 .admin-stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+}
+
+.mini-metrics {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .admin-stats-grid {
@@ -335,41 +389,196 @@ button {
   font-size: 0.85rem;
 }
 
-.table-card,
-.empty-card {
-  padding: 0;
-  overflow: hidden;
+/* =========================================
+   HR workspace queues
+========================================= */
+
+.hr-workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(420px, 1fr);
+  gap: 24px;
+  align-items: start;
 }
 
-.table-header {
+.queue-panel {
+  min-width: 0;
+  border: 1px solid #e0e4ec;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+}
+
+.queue-panel-header {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  padding: 20px 26px;
+  align-items: flex-start;
+  padding: 20px 24px;
   border-bottom: 1px solid #edf0f5;
 }
 
-.table-header h2 {
-  margin: 0;
+.queue-panel-header h3 {
+  margin: 0 0 6px;
+  color: #101423;
   font-size: 1.05rem;
 }
 
-.table-header span {
-  color: #737b8c;
-  font-weight: 800;
+.queue-panel-header p {
+  margin: 0;
+  color: #5f6878;
+  line-height: 1.5;
+  font-size: 0.92rem;
 }
 
+.queue-panel-header span {
+  flex-shrink: 0;
+  border: 1px solid #d8deea;
+  border-radius: 999px;
+  background: #f8faff;
+  color: #334155;
+  padding: 7px 11px;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.queue-scroll-area,
+.table-scroll-area {
+  max-height: 560px;
+  overflow: auto;
+}
+
+.collapsible-panel {
+  margin-bottom: 24px;
+}
+
+.collapsible-panel summary {
+  display: none;
+}
+
+.collapsible-content {
+  min-width: 0;
+}
+
+/* =========================================
+   AI review queue
+========================================= */
+
+.review-card-stack {
+  display: grid;
+  gap: 16px;
+  min-width: 420px;
+  padding: 18px;
+}
+
+.review-card {
+  border: 1px solid #e0e4ec;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(39, 48, 67, 0.05);
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.review-card h4 {
+  margin: 0;
+  color: #101423;
+  font-size: 1rem;
+}
+
+.ticket-id {
+  margin: 0 0 6px;
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.review-message {
+  margin: 0 0 16px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.review-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.ai-response-box,
+.ai-note-box,
+.activity-log-box {
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.ai-response-box {
+  margin-bottom: 12px;
+  background: #edf5ff;
+  border: 1px solid #d4e6fb;
+}
+
+.ai-note-box {
+  margin-bottom: 12px;
+  background: #f8f1ff;
+  border: 1px solid #eadcff;
+}
+
+.activity-log-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.ai-response-box h5,
+.ai-note-box h5,
+.activity-log-box h5 {
+  margin: 0 0 8px;
+  color: #101423;
+  font-size: 0.86rem;
+}
+
+.ai-response-box p,
+.ai-note-box p {
+  margin: 0;
+  color: #334155;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.activity-log-box ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #475569;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   Ticket table queue
+========================================= */
+
 .ticket-table {
+  min-width: 760px;
   width: 100%;
 }
 
 .ticket-row {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) 120px 110px 100px;
+  grid-template-columns: minmax(280px, 1fr) 130px 120px 110px;
   gap: 18px;
   align-items: center;
-  padding: 18px 26px;
+  padding: 18px 24px;
   border-bottom: 1px solid #edf0f5;
+  color: #101423;
 }
 
 .ticket-row:last-child {
@@ -377,22 +586,98 @@ button {
 }
 
 .ticket-row-heading {
-  color: #101423;
-  font-size: 0.82rem;
+  background: #f8faff;
+  color: #334155;
+  font-size: 0.8rem;
   font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .ticket-row strong {
   display: block;
   margin-bottom: 5px;
+  color: #101423;
 }
 
 .ticket-row p {
   margin: 0;
-  color: #737b8c;
+  color: #475569;
   font-size: 0.88rem;
   line-height: 1.5;
 }
+
+/* =========================================
+   Employee form
+========================================= */
+
+.employee-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.request-card {
+  border: 1px solid #e0e4ec;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+}
+
+.request-card h3 {
+  margin-top: 0;
+  color: #101423;
+}
+
+.request-card label {
+  display: block;
+  margin: 18px 0 8px;
+  color: #101423;
+  font-weight: 800;
+}
+
+.request-card input,
+.request-card textarea {
+  width: 100%;
+  border: 1px solid #d4d9e4;
+  border-radius: 10px;
+  background: #fbfcff;
+  padding: 12px;
+  color: #101423;
+}
+
+.request-card input:focus,
+.request-card textarea:focus {
+  outline: 3px solid rgba(11, 99, 206, 0.18);
+  border-color: #0b63ce;
+}
+
+.request-card textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.request-card button {
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #0b63ce;
+  color: #ffffff;
+  padding: 12px 16px;
+  font-weight: 900;
+}
+
+.request-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* =========================================
+   Badges / pills
+========================================= */
 
 .category-pill,
 .priority-pill,
@@ -403,6 +688,7 @@ button {
   padding: 7px 10px;
   font-size: 0.78rem;
   font-weight: 900;
+  white-space: nowrap;
 }
 
 .category-pill {
@@ -430,85 +716,83 @@ button {
   color: #b4232a;
 }
 
-.employee-layout {
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.request-card {
-  padding: 24px;
-}
-
-.request-card h3 {
-  margin-top: 0;
-}
-
-.request-card label {
-  display: block;
-  margin: 18px 0 8px;
-  color: #101423;
-  font-weight: 800;
-}
-
-.request-card input,
-.request-card textarea {
-  width: 100%;
-  border: 1px solid #d4d9e4;
-  border-radius: 10px;
-  background: #fbfcff;
-  padding: 12px;
-  color: #101423;
-}
-
-.request-card textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-
-.request-card button {
-  width: 100%;
-  margin-top: 20px;
-  border: none;
-  border-radius: 10px;
-  background: #0b63ce;
-  color: #ffffff;
-  padding: 12px 16px;
-  font-weight: 900;
-}
-
-.request-card button:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
-}
+/* =========================================
+   Empty states
+========================================= */
 
 .empty-card {
-  padding: 32px;
+  border: 1px solid #e0e4ec;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+}
+
+.compact-empty-card {
+  margin: 18px;
+  padding: 24px;
 }
 
 .empty-card h3 {
   margin-top: 0;
+  color: #101423;
 }
 
 .empty-card p {
   color: #737b8c;
 }
 
+/* =========================================
+   Responsive layout
+========================================= */
+
+@media (max-width: 1100px) {
+  .hr-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 980px) {
   .dashboard-shell {
     grid-template-columns: 1fr;
     width: 100vw;
+    min-height: 100vh;
     margin: 0;
   }
 
   .sidebar {
+    min-height: auto;
+    padding: 18px;
     border-right: none;
     border-bottom: 1px solid #e1e5ee;
   }
 
+  .sidebar-top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .brand {
+    margin-bottom: 0;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+  }
+
   .sidebar-nav {
-    grid-template-columns: repeat(3, 1fr);
+    display: none;
+    margin-top: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-nav.open {
+    display: grid;
+  }
+
+  .sidebar-footer {
+    display: none;
   }
 
   .overview-grid,
@@ -517,8 +801,66 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .ticket-row {
+  .hr-workspace-grid {
     grid-template-columns: 1fr;
+  }
+
+  .collapsible-panel {
+    border: 1px solid #e0e4ec;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+    overflow: hidden;
+  }
+
+  .collapsible-panel summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .collapsible-panel summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .collapsible-panel summary h3 {
+    margin: 0 0 6px;
+    color: #101423;
+    font-size: 1rem;
+  }
+
+  .collapsible-panel summary p {
+    margin: 0;
+    color: #5f6878;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+
+  .summary-icon {
+    color: #0b63ce;
+    font-size: 1.2rem;
+    font-weight: 900;
+  }
+
+  .collapsible-content {
+    padding: 0 18px 18px;
+  }
+
+  .collapsible-content .overview-grid {
+    margin-bottom: 0;
+  }
+
+  .collapsible-content .queue-panel {
+    border: none;
+    box-shadow: none;
+  }
+
+  .ticket-row {
+    grid-template-columns: minmax(280px, 1fr) 130px 120px 110px;
   }
 }
 
@@ -532,6 +874,10 @@ button {
     align-items: flex-start;
   }
 
+  .topbar-user {
+    flex-wrap: wrap;
+  }
+
   .sidebar-nav {
     grid-template-columns: 1fr;
   }
@@ -541,120 +887,20 @@ button {
     align-items: flex-start;
   }
 
-  .review-panel {
-    margin-bottom: 28px;
+  .status-summary-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .review-panel-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 18px;
-    align-items: flex-start;
-    margin-bottom: 16px;
+  .queue-panel-header {
+    flex-direction: column;
   }
 
-  .review-panel-header h3 {
-    margin: 0 0 8px;
-    font-size: 1.15rem;
+  .review-card-stack {
+    min-width: 360px;
   }
 
-  .review-panel-header p {
-    max-width: 720px;
-    margin: 0;
-    color: #737b8c;
-    line-height: 1.6;
-  }
-
-  .review-panel-header span {
-    flex-shrink: 0;
-    border: 1px solid #d8deea;
-    border-radius: 999px;
-    background: #ffffff;
-    color: #5f6878;
-    padding: 8px 12px;
-    font-size: 0.82rem;
-    font-weight: 900;
-  }
-
-  .review-card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .review-card {
-    border: 1px solid #e0e4ec;
-    border-radius: 12px;
-    background: #ffffff;
-    padding: 20px;
-    box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
-  }
-
-  .review-card-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 14px;
-    align-items: flex-start;
-    margin-bottom: 14px;
-  }
-
-  .review-card h4 {
-    margin: 0;
-    font-size: 1rem;
-  }
-
-  .review.message {
-    margin: 0 0 16px;
-    color: #5f6878;
-    line-height: 1.6;
-  }
-
-  .review-meta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-
-  .ai-response-box,
-  .ai-note-box {
-    border-radius: 12px;
-    padding: 14px;
-  }
-
-  .ai-response-box {
-    margin-bottom: 12px;
-    background: #edf5ff;
-    border: 1px solid #d4e6fb;
-  }
-
-  .ai-note-box {
-    background: #f8f1ff;
-    border: 1px solid #eadcff;
-  }
-
-  .ai-response-box h5,
-  .ai-note-box h5 {
-    margin: 0;
-    color: #101423;
-    font-size: 0.86rem;
-  }
-
-  .ai-response-box p,
-  .ai-note-box p {
-    margin: 0;
-    color: #5f6878;
-    line-height: 1.6;
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 980px) {
-    .review-card-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .review-panel-header {
-      flex-direction: column;
-    }
+  .ticket-table {
+    min-width: 680px;
   }
 }

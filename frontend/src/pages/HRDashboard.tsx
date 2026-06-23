@@ -1,8 +1,7 @@
-// @ts-ignore: importing JS module without declaration file
+import { CollapsiblePanel } from "../components/CollapsiblePanel";
 import { StatCard } from "../components/StatCard";
-import { TicketTable } from "../components/TicketTable";
 import { TicketReviewPanel } from "../components/TicketReviewPanel";
-
+import { TicketTable } from "../components/TicketTable";
 import type { Ticket } from "../types/ticket";
 
 type HRDashboardProps = {
@@ -21,68 +20,80 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
   return (
     <section className="page-content">
       <div className="dashboard-heading">
-        <h2>Dashboard</h2>
+        <h2>HR Review Dashboard</h2>
         <p>
-          Review HR tickets, AI classification results, priorities, and draft
-          responses.
+          Review incoming employee support tickets, check AI-assisted triage
+          results, and prepare response drafts before taking action.
         </p>
       </div>
 
-      <section className="overview-grid">
-        <article className="large-panel">
-          <div className="panel-title-row">
-            <h3>Ticket Classification Overview</h3>
-            <span>Mock AI</span>
-          </div>
-
-          <div className="eligibility-layout">
-            <div className="circle-score">
-              <span>71%</span>
+      <CollapsiblePanel
+        title="AI Classification Overview"
+        description="Summary of mock AI triage results and high-priority ticket detection."
+      >
+        <section className="overview-grid">
+          <article className="large-panel">
+            <div className="panel-title-row">
+              <h3>AI Classification Overview</h3>
+              <span>Mock AI Mode</span>
             </div>
 
-            <div>
-              <h4>High Priority Review</h4>
-              <p>
-                Tickets with urgent, blocked, missing, or access-related
-                keywords are flagged for faster HR review.
-              </p>
+            <div className="eligibility-layout">
+              <div className="circle-score">
+                <span>71%</span>
+              </div>
+
+              <div>
+                <h4>Priority Review</h4>
+                <p>
+                  Tickets with urgent, blocked, missing, access, or payment
+                  keywords are flagged for faster HR review.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="status-summary-row warning-row">
-            <span>High Priority</span>
-            <strong>{highPriorityCount}</strong>
-            <small>Needs review</small>
-          </div>
+            <div className="status-summary-row warning-row">
+              <span>High Priority Tickets</span>
+              <strong>{highPriorityCount}</strong>
+              <small>Needs review</small>
+            </div>
 
-          <div className="status-summary-row success-row">
-            <span>Payroll</span>
-            <strong>{payrollCount}</strong>
-            <small>Category match</small>
-          </div>
-        </article>
+            <div className="status-summary-row success-row">
+              <span>Payroll Tickets</span>
+              <strong>{payrollCount}</strong>
+              <small>Detected by category</small>
+            </div>
+          </article>
 
-        <article className="large-panel">
-          <div className="panel-title-row">
-            <h3>AI Triage Status</h3>
-            <span>Live MVP</span>
-          </div>
+          <article className="large-panel">
+            <div className="panel-title-row">
+              <h3>Triage Status</h3>
+              <span>Live MVP</span>
+            </div>
 
-          <div className="donut-placeholder">
-            <strong>{tickets.length}</strong>
-            <span>Total Tickets</span>
-          </div>
+            <div className="donut-placeholder">
+              <strong>{tickets.length}</strong>
+              <span>Total Tickets</span>
+            </div>
 
-          <div className="mini-metrics">
-            <StatCard label="Open" value={tickets.length} />
-            <StatCard label="High" value={highPriorityCount} />
-          </div>
-        </article>
+            <div className="mini-metrics">
+              <StatCard label="Open" value={tickets.length} />
+              <StatCard label="High priority" value={highPriorityCount} />
+            </div>
+          </article>
+        </section>
+      </CollapsiblePanel>
+
+      <section className="hr-workspace-grid">
+        <CollapsiblePanel
+          title="AI Review Queue"
+          description="Review AI-assisted category, priority, response drafts, and activity notes."
+        >
+          <TicketReviewPanel tickets={tickets} />
+        </CollapsiblePanel>
+
+        <TicketTable tickets={tickets} />
       </section>
-
-      <TicketReviewPanel tickets={tickets} />
-
-      <TicketTable tickets={tickets} />
     </section>
   );
 }
