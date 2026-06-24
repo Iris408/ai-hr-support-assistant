@@ -1,22 +1,32 @@
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 # =========================================
-# EN: Local SQLite database for fast MVP development
-# JP: MVP開発用のローカル SQLite データベース
+# EN: Load environment variables from .env
+# JP: .env から環境変数を読み込みます
 # =========================================
 
-DATABASE_URL = "sqlite:///./ai_hr_support.db"
+load_dotenv()
 
 # =========================================
-# EN: SQLite needs this option for FastAPI local development
-# JP: FastAPI のローカル開発では SQLite にこの設定が必要です
+# EN: PostgreSQL database URL from environment variable
+# JP: 環境変数から PostgreSQL のデータベースURLを取得します
 # =========================================
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL is None:
+    raise ValueError("DATABASE_URL environment variable is not set.")
+
+# =========================================
+# EN: Create SQLAlchemy database engine
+# JP: SQLAlchemy のデータベースエンジンを作成します
+# =========================================
+
+engine = create_engine(DATABASE_URL)
 
 # =========================================
 # EN: Create database sessions
