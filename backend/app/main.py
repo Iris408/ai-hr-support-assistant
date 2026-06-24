@@ -13,7 +13,7 @@ from app.routes import tickets
 # JP: 後で Alembic マイグレーションに置き換えます。
 # =========================================
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 # =========================================
 # EN: Create the FastAPI application

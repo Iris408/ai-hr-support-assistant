@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: ai-hr-support-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ai_hr_support
+    ports:
+      - "5434:5432"
+    volumes:
+      - ai_hr_support_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  ai_hr_support_postgres_data:
