@@ -30,24 +30,24 @@ Current stage: MVP frontend and backend working locally
 <table>
   <tr>
     <td>
-      <img src="../public/screenshots/hr-team-overview.png" width="400"/>
+      <img src="./public/screenshots/hr-team-overview.png" width="400"/>
       <br/>
       <strong>HR Team Dashboard</strong>
     </td>
     <td>
-      <img src="../public/screenshots/employee-overview.png" width="400"/>
+      <img src="./public/screenshots/employee-overview.png" width="400"/>
       <br/>
       <strong>Employee Dashboard</strong>
     </td>
   </tr>
   <tr>
     <td>
-      <img src="../public/screenshots/admin-overview.png" width="400"/>
+      <img src="./public/screenshots/admin-overview.png" width="400"/>
       <br/>
       <strong>Admin Dashboard</strong>
     </td>
     <td>
-      <img src="../public/screenshots/mobile-menu.png" width="400"/>
+      <img src="./public/screenshots/mobile-menu.png" width="400"/>
       <br/>
       <strong>Mobile Menu</strong>
     </td>
