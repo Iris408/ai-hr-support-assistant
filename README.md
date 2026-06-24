@@ -25,13 +25,13 @@ Current stage: MVP frontend and backend working locally
 * ✅ HR/Admin frontend filters
 * ✅ Category / priority / status pills
 
-![HR Team Dashboard](docs/images/hr-team-overview.png)
+![HR Team Dashboard](public/screenshots/hr-team-overview.png)
 
-![Employee Dashboard](docs/images/employee-overview.png)
+![Employee Dashboard](public/screenshots/employee-overview.png)
 
-![Admin Dashboard](docs/images/admin-overview.png)
+![Admin Dashboard](public/screenshots/admin-overview.png)
 
-![Mobile Dashboard](docs/images/mobile-menu.png)
+![Mobile Dashboard](public/screenshots/mobile-menu.png)
 
 ## Why I Built This
 
