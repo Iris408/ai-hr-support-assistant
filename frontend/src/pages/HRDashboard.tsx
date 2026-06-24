@@ -5,6 +5,10 @@ import { TicketReviewPanel } from "../components/TicketReviewPanel";
 import { TicketTable } from "../components/TicketTable";
 import type { Ticket } from "../types/ticket";
 
+import { useMemo, useState } from "react";
+import { TicketFilters } from "../components/TicketFilters";
+import type { CategoryFilter, PriorityFilter, SortOrder } from "../components/TicketFilters";
+
 type HRDashboardProps = {
   tickets: Ticket[];
 };
@@ -17,6 +21,38 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
   const payrollCount = tickets.filter(
     (ticket) => ticket.category === "Payroll"
   ).length;
+
+  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("All");
+  const [priorityFilter, setPriorityFilter] = useState<PriorityFilter>("All");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
+
+  const filteredTickets = useMemo(() => {
+    return tickets
+      .filter((ticket) => {
+        if (categoryFilter === "All") {
+          return true;
+        }
+
+        return ticket.category === categoryFilter;
+      })
+      .filter((ticket) => {
+        if (priorityFilter === "All") {
+          return true;
+        }
+
+        return ticket.priority === priorityFilter;
+      })
+      .sort((firstTicket, secondTicket) => {
+        const firstDate = new Date(firstTicket.created_at).getTime();
+        const secondDate = new Date(secondTicket.created_at).getTime();
+
+        if (sortOrder === "newest") {
+          return secondDate - firstDate;
+        }
+
+        return firstDate - secondDate;
+      });
+  }, [tickets, categoryFilter, priorityFilter, sortOrder]);
 
   return (
     <section className="page-content">
@@ -85,12 +121,24 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
         </section>
       </CollapsiblePanel>
 
+      <TicketFilters
+        categoryFilter={categoryFilter}
+        priorityFilter={priorityFilter}
+        sortOrder={sortOrder}
+        onCategoryChange={setCategoryFilter}
+        onPriorityChange={setPriorityFilter}
+        onSortOrderChange={setSortOrder}
+        visibleTickets={filteredTickets}
+        totalTickets={tickets.length}
+      />  
+
       <section className="hr-workspace-grid">
         <CollapsiblePanel
           title="AI Review Queue"
           description="Review AI-assisted category, priority, response drafts, and activity notes."
         >
-          <TicketReviewPanel tickets={tickets} />
+          <TicketReviewPanel tickets={filteredTickets} />
+          <TicketTable tickets={filteredTickets} />
         </CollapsiblePanel>
 
         <CollapsiblePanel
