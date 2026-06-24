@@ -2,6 +2,7 @@ import { type FormEvent, useState } from "react";
 
 import { createTicket } from "../api/ticketsApi";
 import { TicketTable } from "../components/TicketTable";
+import { CollapsiblePanel } from "../components/CollapsiblePanel";
 import type { Ticket } from "../types/ticket";
 
 type EmployeeDashboardProps = {
@@ -69,7 +70,13 @@ export function EmployeeDashboard({
           </button>
         </form>
 
-        <TicketTable tickets={tickets} />
+        <CollapsiblePanel
+          title="My Ticket Queue"
+          description="View submitted HR requests and their current status."
+        > 
+          <TicketTable tickets={tickets} />
+        </CollapsiblePanel>   
+
       </section>
     </section>
   );

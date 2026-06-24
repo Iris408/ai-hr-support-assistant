@@ -1,3 +1,5 @@
+import { CollapsiblePanel } from "../components/CollapsiblePanel";
+// @ts-ignore - StatCard.jsx lacks declaration file
 import { StatCard } from "../components/StatCard";
 import { TicketTable } from "../components/TicketTable";
 import type { Ticket } from "../types/ticket";
@@ -32,7 +34,12 @@ export function AdminDashboard({ tickets }: AdminDashboardProps) {
         <StatCard label="Categories" value={categories.size} />
       </section>
 
-      <TicketTable tickets={tickets} />
+      <CollapsiblePanel
+        title="Admin Ticket Queue"
+        description="Review all submitted tickets by category, priority, and current status."
+      >
+        <TicketTable tickets={tickets} />
+      </CollapsiblePanel>
     </section>
   );
 }

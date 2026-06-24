@@ -4,6 +4,10 @@ type TicketReviewPanelProps = {
   tickets: Ticket[];
 };
 
+function toClassName(value: string) {
+  return value.toLowerCase().replace(/\s+/g, "-");
+}
+
 export function TicketReviewPanel({ tickets }: TicketReviewPanelProps) {
   return (
     <section className="queue-panel">
@@ -35,9 +39,7 @@ export function TicketReviewPanel({ tickets }: TicketReviewPanelProps) {
                     <h4>{ticket.title}</h4>
                   </div>
 
-                  <span
-                    className={`priority-pill priority-${ticket.priority.toLowerCase()}`}
-                  >
+                  <span className={`priority-pill priority-${toClassName(ticket.priority)}`}>
                     {ticket.priority}
                   </span>
                 </div>
@@ -45,8 +47,13 @@ export function TicketReviewPanel({ tickets }: TicketReviewPanelProps) {
                 <p className="review-message">{ticket.message}</p>
 
                 <div className="review-meta-row">
-                  <span className="category-pill">{ticket.category}</span>
-                  <span className="status-pill">{ticket.status}</span>
+                  <span className={`category-pill category-${toClassName(ticket.category)}`}>
+                    {ticket.category}
+                  </span>
+
+                  <span className={`status-pill status-${toClassName(ticket.status)}`}>
+                    {ticket.status}
+                  </span>
                 </div>
 
                 <div className="ai-response-box">

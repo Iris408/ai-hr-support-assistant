@@ -15,11 +15,20 @@ export function Sidebar({ activeRole, onRoleChange }: SidebarProps) {
   };
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isMenuOpen ? "menu-open" : ""}`}>
       <div className="sidebar-top-row">
         <div className="brand">
           <div className="brand-icon">H</div>
-          <span>HRMTECH</span>
+
+          <div>
+            <span className="desktop-brand-text">HRMTECH</span>
+            <span className="mobile-brand-text">AI HR Support Assistant</span>
+          </div>
+        </div>
+
+        <div className="mobile-header-user" aria-label="Demo user controls">
+          <div className="avatar">D</div>
+          <span className="language-pill">EN</span>
         </div>
 
         <button
@@ -55,8 +64,8 @@ export function Sidebar({ activeRole, onRoleChange }: SidebarProps) {
       </nav>
 
       <div className="sidebar-footer">
-        <p>MVP Mode</p>
-        <span>JWT roles later</span>
+        <p>AI HR Support Assistant</p>
+        <span>MVP role menu. Real JWT roles later.</span>
       </div>
     </aside>
   );

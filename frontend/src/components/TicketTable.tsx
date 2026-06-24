@@ -4,6 +4,10 @@ type TicketTableProps = {
   tickets: Ticket[];
 };
 
+function toClassName(value: string) {
+  return value.toLowerCase().replace(/\s+/g, "-");
+}
+
 export function TicketTable({ tickets }: TicketTableProps) {
   return (
     <section className="queue-panel">
@@ -24,30 +28,37 @@ export function TicketTable({ tickets }: TicketTableProps) {
       ) : (
         <div className="table-scroll-area">
           <div className="ticket-table">
-            <div className="ticket-row ticket-row-heading">
-              <span>Ticket</span>
-              <span>Category</span>
-              <span>Priority</span>
-              <span>Status</span>
-            </div>
-
             {tickets.map((ticket) => (
-              <div className="ticket-row" key={ticket.id}>
-                <div>
+              <article className="ticket-row" key={ticket.id}>
+                <div className="ticket-main">
+                  <p className="ticket-id">Ticket #{ticket.id}</p>
                   <strong>{ticket.title}</strong>
                   <p>{ticket.message}</p>
                 </div>
 
-                <span className="category-pill">{ticket.category}</span>
+                <div className="ticket-meta-grid">
+                  <div className="ticket-meta-item">
+                    <span className="ticket-meta-label">Category</span>
+                    <span className={`category-pill category-${toClassName(ticket.category)}`}>
+                      {ticket.category}
+                    </span>
+                  </div>
 
-                <span
-                  className={`priority-pill priority-${ticket.priority.toLowerCase()}`}
-                >
-                  {ticket.priority}
-                </span>
+                  <div className="ticket-meta-item">
+                    <span className="ticket-meta-label">Priority</span>
+                    <span className={`priority-pill priority-${toClassName(ticket.priority)}`}>
+                      {ticket.priority}
+                    </span>
+                  </div>
 
-                <span className="status-pill">{ticket.status}</span>
-              </div>
+                  <div className="ticket-meta-item">
+                    <span className="ticket-meta-label">Status</span>
+                    <span className={`status-pill status-${toClassName(ticket.status)}`}>
+                      {ticket.status}
+                    </span>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>

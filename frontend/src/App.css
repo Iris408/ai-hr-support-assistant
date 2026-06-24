@@ -63,7 +63,7 @@ button {
 }
 
 /* =========================================
-   Sidebar
+   Sidebar / mobile header
 ========================================= */
 
 .sidebar {
@@ -73,6 +73,10 @@ button {
   padding: 28px 20px;
   background: #ffffff;
   border-right: 1px solid #e1e5ee;
+}
+
+.sidebar-top-row {
+  display: block;
 }
 
 .brand {
@@ -88,11 +92,31 @@ button {
   display: grid;
   width: 28px;
   height: 28px;
+  flex-shrink: 0;
   place-items: center;
   border-radius: 8px;
   background: #0b63ce;
   color: #ffffff;
   font-size: 0.85rem;
+}
+
+.desktop-brand-text {
+  display: inline;
+}
+
+.mobile-brand-text,
+.mobile-header-user {
+  display: none;
+}
+
+.mobile-menu-button {
+  display: none;
+  border: 1px solid #d8deea;
+  border-radius: 10px;
+  background: #f8faff;
+  color: #0b63ce;
+  padding: 8px 12px;
+  font-weight: 900;
 }
 
 .sidebar-nav {
@@ -131,20 +155,6 @@ button {
 .sidebar-footer span {
   color: #737b8c;
   font-size: 0.82rem;
-}
-
-.sidebar-top-row {
-  display: block;
-}
-
-.mobile-menu-button {
-  display: none;
-  border: 1px solid #d8deea;
-  border-radius: 10px;
-  background: #f8faff;
-  color: #0b63ce;
-  padding: 8px 12px;
-  font-weight: 900;
 }
 
 /* =========================================
@@ -222,6 +232,22 @@ button {
   margin: 0;
   color: #737b8c;
   line-height: 1.6;
+}
+
+/* =========================================
+   Collapsible panels
+========================================= */
+
+.collapsible-panel {
+  margin-bottom: 24px;
+}
+
+.collapsible-panel summary {
+  display: none;
+}
+
+.collapsible-content {
+  min-width: 0;
 }
 
 /* =========================================
@@ -447,18 +473,6 @@ button {
   overflow: auto;
 }
 
-.collapsible-panel {
-  margin-bottom: 24px;
-}
-
-.collapsible-panel summary {
-  display: none;
-}
-
-.collapsible-content {
-  min-width: 0;
-}
-
 /* =========================================
    AI review queue
 ========================================= */
@@ -567,44 +581,60 @@ button {
 ========================================= */
 
 .ticket-table {
-  min-width: 760px;
+  display: grid;
+  gap: 14px;
   width: 100%;
+  padding: 18px;
 }
 
 .ticket-row {
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) 130px 120px 110px;
-  gap: 18px;
-  align-items: center;
-  padding: 18px 24px;
-  border-bottom: 1px solid #edf0f5;
+  gap: 16px;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 18px;
   color: #101423;
 }
 
-.ticket-row:last-child {
-  border-bottom: none;
-}
-
-.ticket-row-heading {
-  background: #f8faff;
-  color: #334155;
-  font-size: 0.8rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.ticket-row strong {
+.ticket-main strong {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   color: #101423;
+  font-size: 0.98rem;
 }
 
-.ticket-row p {
+.ticket-main p {
   margin: 0;
   color: #475569;
   font-size: 0.88rem;
   line-height: 1.5;
+}
+
+.ticket-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ticket-meta-item {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ticket-meta-label {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.table-scroll-area {
+  max-height: 560px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* =========================================
@@ -676,44 +706,64 @@ button {
 }
 
 /* =========================================
-   Badges / pills
+   Ticket table queue
 ========================================= */
 
-.category-pill,
-.priority-pill,
-.status-pill {
-  display: inline-flex;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 7px 10px;
-  font-size: 0.78rem;
+.ticket-table {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  padding: 18px;
+}
+
+.ticket-row {
+  display: grid;
+  gap: 16px;
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 18px;
+  color: #101423;
+}
+
+.ticket-main strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #101423;
+  font-size: 0.98rem;
+}
+
+.ticket-main p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.ticket-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ticket-meta-item {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ticket-meta-label {
+  color: #64748b;
+  font-size: 0.72rem;
   font-weight: 900;
-  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.category-pill {
-  background: #edf5ff;
-  color: #0b63ce;
-}
-
-.status-pill {
-  background: #f0f2f7;
-  color: #5f6878;
-}
-
-.priority-low {
-  background: #e4f8ef;
-  color: #217653;
-}
-
-.priority-medium {
-  background: #fff3d4;
-  color: #8a5c00;
-}
-
-.priority-high {
-  background: #ffe5e7;
-  color: #b4232a;
+.table-scroll-area {
+  max-height: 560px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* =========================================
@@ -761,30 +811,73 @@ button {
 
   .sidebar {
     min-height: auto;
-    padding: 18px;
+    padding: 14px 16px;
     border-right: none;
     border-bottom: 1px solid #e1e5ee;
   }
 
   .sidebar-top-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    gap: 10px;
     align-items: center;
   }
 
   .brand {
+    min-width: 0;
     margin-bottom: 0;
+  }
+
+  .desktop-brand-text {
+    display: none;
+  }
+
+  .mobile-brand-text {
+    display: block;
+    color: #101423;
+    font-size: 0.95rem;
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-header-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .mobile-header-user .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .mobile-header-user .language-pill {
+    padding: 6px 9px;
+    font-size: 0.76rem;
+    font-weight: 900;
   }
 
   .mobile-menu-button {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d8deea;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #0b63ce;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    font-weight: 900;
   }
 
   .sidebar-nav {
     display: none;
-    margin-top: 16px;
     grid-template-columns: 1fr;
+    margin-top: 16px;
   }
 
   .sidebar-nav.open {
@@ -793,14 +886,20 @@ button {
 
   .sidebar-footer {
     display: none;
+    margin-top: 16px;
+  }
+
+  .sidebar.menu-open .sidebar-footer {
+    display: block;
+  }
+
+  .topbar {
+    display: none;
   }
 
   .overview-grid,
   .employee-layout,
-  .admin-stats-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .admin-stats-grid,
   .hr-workspace-grid {
     grid-template-columns: 1fr;
   }
@@ -855,7 +954,8 @@ button {
   }
 
   .collapsible-content .queue-panel {
-    border: none;
+    border: 1px solid #e0e4ec;
+    border-radius: 12px;
     box-shadow: none;
   }
 
@@ -874,8 +974,12 @@ button {
     align-items: flex-start;
   }
 
-  .topbar-user {
-    flex-wrap: wrap;
+  .sidebar-top-row {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .mobile-header-user {
+    grid-column: auto;
   }
 
   .sidebar-nav {
@@ -900,7 +1004,350 @@ button {
     min-width: 360px;
   }
 
-  .ticket-table {
-    min-width: 680px;
+  .ticket-meta-grid {
+    grid-template-columns: 1fr;
+  }  
+}
+
+/* =========================================
+   Badges / pills
+========================================= */
+
+.category-pill,
+.priority-pill,
+.status-pill {
+  display: inline-flex;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 0.76rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.category-pill {
+  background: #edf5ff;
+  color: #5086c7;
+  border-color: #cfe3fb;
+}
+
+.priority-pill {
+  background: #f1f5f9;
+  color: #ae5f66;
+  border-color: #d8e0ea;
+}
+
+.status-pill {
+  background: #f0f2f7;
+  color: #5f6878;
+  border-color: #d8e0ea;
+}
+
+.category-payroll {
+  background: #edf5ff;
+  color: #0b63ce;
+  border-color: #cfe3fb;
+}
+
+.category-benefits {
+  background: #f4edff;
+  color: #6d3fc2;
+  border-color: #e4d4ff;
+}
+
+.category-onboarding {
+  background: #e6fbf8;
+  color: #145c76;
+  border-color: #c8f1eb;
+}
+
+.category-policy {
+  background: #fff3d4;
+  color: #8a5c00;
+  border-color: #f2d58d;
+}
+
+.category-other {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #d8e0ea;
+}
+
+.priority-low {
+  background: #e4f8ef;
+  color: #217653;
+  border-color: #bce8d2;
+}
+
+.priority-medium {
+  background: #fff3d4;
+  color: #b98a2a;
+  border-color: #f2d58d;
+}
+
+.priority-high {
+  background: #ffe5e7;
+  color: #b4232a;
+  border-color: #f3b8bd;
+}
+
+.status-open {
+  background: #e4f8ef;
+  color: #217653;
+  border-color: #bce8d2;
+}
+
+.status-in-progress {
+  background: #fff3d4;
+  color: #cd9118;
+  border-color: #f2d58d;
+}
+
+.status-resolved {
+  background: #edf5ff;
+  color: #0b63ce;
+  border-color: #cfe3fb;
+}
+
+.status-closed {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #d8e0ea;
+}
+
+/* =========================================
+   Empty states
+========================================= */
+
+.empty-card {
+  border: 1px solid #e0e4ec;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+}
+
+.compact-empty-card {
+  margin: 18px;
+  padding: 24px;
+}
+
+.empty-card h3 {
+  margin-top: 0;
+  color: #101423;
+}
+
+.empty-card p {
+  color: #737b8c;
+}
+
+/* =========================================
+   Responsive layout
+========================================= */
+
+@media (max-width: 1100px) {
+  .hr-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .dashboard-shell {
+    grid-template-columns: 1fr;
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .sidebar {
+    min-height: auto;
+    padding: 14px 16px;
+    border-right: none;
+    border-bottom: 1px solid #e1e5ee;
+  }
+
+  .sidebar-top-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .brand {
+    min-width: 0;
+    margin-bottom: 0;
+  }
+
+  .desktop-brand-text {
+    display: none;
+  }
+
+  .mobile-brand-text {
+    display: block;
+    color: #101423;
+    font-size: 0.95rem;
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-header-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .mobile-header-user .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .mobile-header-user .language-pill {
+    padding: 6px 9px;
+    font-size: 0.76rem;
+    font-weight: 900;
+  }
+
+  .mobile-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d8deea;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #0b63ce;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    font-weight: 900;
+  }
+
+  .sidebar-nav {
+    display: none;
+    grid-template-columns: 1fr;
+    margin-top: 16px;
+  }
+
+  .sidebar-nav.open {
+    display: grid;
+  }
+
+  .sidebar-footer {
+    display: none;
+    margin-top: 16px;
+  }
+
+  .sidebar.menu-open .sidebar-footer {
+    display: block;
+  }
+
+  .topbar {
+    display: none;
+  }
+
+  .overview-grid,
+  .employee-layout,
+  .admin-stats-grid,
+  .hr-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collapsible-panel {
+    border: 1px solid #e0e4ec;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
+    overflow: hidden;
+  }
+
+  .collapsible-panel summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .collapsible-panel summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .collapsible-panel summary h3 {
+    margin: 0 0 6px;
+    color: #101423;
+    font-size: 1rem;
+  }
+
+  .collapsible-panel summary p {
+    margin: 0;
+    color: #5f6878;
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+
+  .summary-icon {
+    color: #0b63ce;
+    font-size: 1.2rem;
+    font-weight: 900;
+  }
+
+  .collapsible-content {
+    padding: 0 18px 18px;
+  }
+
+  .collapsible-content .overview-grid {
+    margin-bottom: 0;
+  }
+
+  .collapsible-content .queue-panel {
+    border: 1px solid #e0e4ec;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .page-content {
+    padding: 24px 18px;
+  }
+
+  .sidebar-top-row {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .mobile-header-user {
+    grid-column: auto;
+  }
+
+  .sidebar-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .eligibility-layout {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-summary-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .queue-panel-header {
+    flex-direction: column;
+  }
+
+  .review-card-stack {
+    min-width: 360px;
+  }
+
+  .ticket-meta-grid {
+    grid-template-columns: 1fr;
   }
 }

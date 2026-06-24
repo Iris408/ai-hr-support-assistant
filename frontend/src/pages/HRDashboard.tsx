@@ -1,4 +1,5 @@
 import { CollapsiblePanel } from "../components/CollapsiblePanel";
+// @ts-ignore: no declaration file for StatCard.jsx
 import { StatCard } from "../components/StatCard";
 import { TicketReviewPanel } from "../components/TicketReviewPanel";
 import { TicketTable } from "../components/TicketTable";
@@ -92,7 +93,12 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
           <TicketReviewPanel tickets={tickets} />
         </CollapsiblePanel>
 
-        <TicketTable tickets={tickets} />
+        <CollapsiblePanel
+          title="Ticket Queue"
+          description="View submitted tickets by category, priority, and current status."
+        >
+          <TicketTable tickets={tickets} />
+        </CollapsiblePanel>
       </section>
     </section>
   );
