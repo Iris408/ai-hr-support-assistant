@@ -642,6 +642,10 @@ button {
   padding: 18px;
 }
 
+.queue-panel .empty-card {
+  margin: 18px;
+}  
+
 .ticket-row {
   display: grid;
   gap: 16px;
@@ -758,324 +762,6 @@ button {
 .request-card button:disabled {
   cursor: not-allowed;
   opacity: 0.7;
-}
-
-/* =========================================
-   Ticket table queue
-========================================= */
-
-.ticket-table {
-  display: grid;
-  gap: 14px;
-  width: 100%;
-  padding: 18px;
-}
-
-.ticket-row {
-  display: grid;
-  gap: 16px;
-  border: 1px solid #edf0f5;
-  border-radius: 12px;
-  background: #ffffff;
-  padding: 18px;
-  color: #101423;
-}
-
-.ticket-main strong {
-  display: block;
-  margin-bottom: 6px;
-  color: #101423;
-  font-size: 0.98rem;
-}
-
-.ticket-main p {
-  margin: 0;
-  color: #475569;
-  font-size: 0.88rem;
-  line-height: 1.5;
-}
-
-.ticket-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.ticket-meta-item {
-  display: grid;
-  gap: 6px;
-  min-width: 0;
-}
-
-.ticket-meta-label {
-  color: #64748b;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.table-scroll-area {
-  max-height: 560px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-/* =========================================
-   Empty states
-========================================= */
-
-.empty-card {
-  border: 1px solid #e0e4ec;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
-}
-
-.compact-empty-card {
-  margin: 18px;
-  padding: 24px;
-}
-
-.empty-card h3 {
-  margin-top: 0;
-  color: #101423;
-}
-
-.empty-card p {
-  color: #737b8c;
-}
-
-/* =========================================
-   Responsive layout
-========================================= */
-
-@media (max-width: 1100px) {
-  .hr-workspace-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 980px) {
-  .dashboard-shell {
-    grid-template-columns: 1fr;
-    width: 100vw;
-    min-height: 100vh;
-    margin: 0;
-  }
-
-  .sidebar {
-    min-height: auto;
-    padding: 14px 16px;
-    border-right: none;
-    border-bottom: 1px solid #e1e5ee;
-  }
-
-  .sidebar-top-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .brand {
-    min-width: 0;
-    margin-bottom: 0;
-  }
-
-  .desktop-brand-text {
-    display: none;
-  }
-
-  .mobile-brand-text {
-    display: block;
-    color: #101423;
-    font-size: 0.95rem;
-    font-weight: 900;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .mobile-header-user {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-  }
-
-  .mobile-header-user .avatar {
-    width: 30px;
-    height: 30px;
-    font-size: 0.8rem;
-  }
-
-  .mobile-header-user .language-pill {
-    padding: 6px 9px;
-    font-size: 0.76rem;
-    font-weight: 900;
-  }
-
-  .mobile-menu-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #d8deea;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #0b63ce;
-    padding: 8px 12px;
-    font-size: 0.82rem;
-    font-weight: 900;
-  }
-
-  .sidebar-nav {
-    display: none;
-    grid-template-columns: 1fr;
-    margin-top: 16px;
-  }
-
-  .sidebar-nav.open {
-    display: grid;
-  }
-
-  .sidebar-footer {
-    display: none;
-    margin-top: 16px;
-  }
-
-  .sidebar.menu-open .sidebar-footer {
-    display: block;
-  }
-
-  .topbar {
-    display: none;
-  }
-
-  .overview-grid,
-  .employee-layout,
-  .admin-stats-grid,
-  .hr-workspace-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .collapsible-panel {
-    border: 1px solid #e0e4ec;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 12px 28px rgba(39, 48, 67, 0.06);
-    overflow: hidden;
-  }
-
-  .collapsible-panel summary {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    align-items: flex-start;
-    padding: 18px;
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .collapsible-panel summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .collapsible-panel summary h3 {
-    margin: 0 0 6px;
-    color: #101423;
-    font-size: 1rem;
-  }
-
-  .collapsible-panel summary p {
-    margin: 0;
-    color: #5f6878;
-    line-height: 1.5;
-    font-size: 0.9rem;
-  }
-
-  .summary-icon {
-    color: #0b63ce;
-    font-size: 1.2rem;
-    font-weight: 900;
-  }
-
-  .collapsible-content {
-    padding: 0 18px 18px;
-  }
-
-  .collapsible-content .overview-grid {
-    margin-bottom: 0;
-  }
-
-  .collapsible-content .queue-panel {
-    border: 1px solid #e0e4ec;
-    border-radius: 12px;
-    box-shadow: none;
-  }
-
-  .ticket-row {
-    grid-template-columns: minmax(280px, 1fr) 130px 120px 110px;
-  }
-
-    .filter-panel {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .filter-controls {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .filter-controls select {
-    width: 100%;
-  }
-}
-
-@media (max-width: 620px) {
-  .page-content {
-    padding: 24px 18px;
-  }
-
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .sidebar-top-row {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-  }
-
-  .mobile-header-user {
-    grid-column: auto;
-  }
-
-  .sidebar-nav {
-    grid-template-columns: 1fr;
-  }
-
-  .eligibility-layout {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .status-summary-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .queue-panel-header {
-    flex-direction: column;
-  }
-
-  .review-card-stack {
-    min-width: 360px;
-  }
-
-  .ticket-meta-grid {
-    grid-template-columns: 1fr;
-  }  
 }
 
 /* =========================================
@@ -1212,7 +898,7 @@ button {
   color: #737b8c;
 }
 
-/* =========================================
+ /* =========================================
    Responsive layout
 ========================================= */
 
@@ -1325,6 +1011,20 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .filter-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .filter-controls select {
+    width: 100%;
+  }
+
   .collapsible-panel {
     border: 1px solid #e0e4ec;
     border-radius: 12px;
@@ -1379,6 +1079,14 @@ button {
     border-radius: 12px;
     box-shadow: none;
   }
+
+  .ticket-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-meta-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1416,7 +1124,21 @@ button {
     min-width: 360px;
   }
 
+  .ticket-row {
+    grid-template-columns: 1fr;
+  }
+
   .ticket-meta-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ticket-table {
+    padding: 14px;
+  }
+
+  .table-scroll-area {
+    max-height: 520px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }

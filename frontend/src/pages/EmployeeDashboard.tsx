@@ -1,7 +1,7 @@
 import { type FormEvent, useState } from "react";
 
 import { createTicket } from "../api/ticketsApi";
-import { TicketTable } from "../components/TicketTable";
+import { TicketQueuePanel } from "../components/TicketQueuePanel";
 import { CollapsiblePanel } from "../components/CollapsiblePanel";
 import type { Ticket } from "../types/ticket";
 
@@ -74,7 +74,10 @@ export function EmployeeDashboard({
           title="My Ticket Queue"
           description="View submitted HR requests and their current status."
         > 
-          <TicketTable tickets={tickets} />
+          <TicketQueuePanel
+            title="My Ticket Queue"
+            description="View submitted HR requests and their current status."
+            tickets={tickets} />
         </CollapsiblePanel>   
 
       </section>

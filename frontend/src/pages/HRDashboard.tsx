@@ -2,7 +2,7 @@ import { CollapsiblePanel } from "../components/CollapsiblePanel";
 // @ts-ignore: no declaration file for StatCard.jsx
 import { StatCard } from "../components/StatCard";
 import { TicketReviewPanel } from "../components/TicketReviewPanel";
-import { TicketTable } from "../components/TicketTable";
+import { TicketQueuePanel } from "../components/TicketQueuePanel";
 import type { Ticket } from "../types/ticket";
 
 import { useMemo, useState } from "react";
@@ -135,17 +135,20 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
       <section className="hr-workspace-grid">
         <CollapsiblePanel
           title="AI Review Queue"
-          description="Review AI-assisted category, priority, response drafts, and activity notes."
+          description="Review AI-assisted category, priority, response drafts and activity notes."
         >
           <TicketReviewPanel tickets={filteredTickets} />
-          <TicketTable tickets={filteredTickets} />
         </CollapsiblePanel>
 
         <CollapsiblePanel
           title="Ticket Queue"
-          description="View submitted tickets by category, priority, and current status."
+          description="View submitted tickets by category, priority and current status."
         >
-          <TicketTable tickets={tickets} />
+          <TicketQueuePanel
+            title="Ticket Queue"
+            description="View submitted tickets by category, priority and current status."
+            tickets={filteredTickets} 
+          />
         </CollapsiblePanel>
       </section>
     </section>
