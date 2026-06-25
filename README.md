@@ -8,24 +8,25 @@ The current version uses **mock AI classification** to categorise tickets, assig
 
 ## Project Status
 
-Current stage: MVP frontend and backend working locally
+**Current stage:** Portfolio-ready MVP
 
-* ✅ FastAPI backend
-* ✅ SQLite local database
-* ✅ SQLAlchemy ticket model
-* ✅ React + TypeScript frontend
-* ✅ Employee / HR Team / Admin demo views
-* ✅ Mock AI ticket classification
-* ✅ Suggested HR response drafts
-* ✅ Internal AI notes
-* ✅ Ticket queue cards
-* ✅ Responsive mobile layout
-* ✅ Mobile menu
-* ✅ Collapsible dashboard panels
-* ✅ HR/Admin frontend filters
-* ✅ Category / priority / status pills
+✅ FastAPI backend  
+✅ PostgreSQL database  
+✅ Docker Compose PostgreSQL setup  
+✅ Alembic database migrations  
+✅ SQLAlchemy ticket model  
+✅ React + TypeScript frontend  
+✅ Employee / HR Team / Admin demo views  
+✅ Mock AI ticket classification  
+✅ AI Review Queue  
+✅ Admin dashboard  
+✅ Ticket status lifecycle: Open, In Progress, Resolved, Closed  
+✅ HR/Admin status update workflow  
+✅ Frontend filtering and sorting  
+✅ Responsive mobile layout  
+✅ GitHub screenshots  
 
-## Screenshots
+### Screenshots
 
 <table>
   <tr>
@@ -47,86 +48,30 @@ Current stage: MVP frontend and backend working locally
       <strong>Admin Dashboard</strong>
     </td>
     <td>
-      <img src="./frontend/public/screenshots/mobile-menu.png" width="100"/>
+      <img src="./frontend/public/screenshots/mobile-menu.png" width="200"/>
       <br/>
-      <strong>Mobile Menu</strong>
+      <strong>Safari Mobile Menu</strong>
     </td>
   </tr>
 </table>
 
-## Why I Built This
-
-This project was created to demonstrate practical full-stack engineering skills through an internal-tool style application that connects:
-
-* frontend dashboard development
-* backend API design
-* database storage
-* AI-assisted workflow design
-* HR/business operations context
-* responsive UI design
-* clean documentation and GitHub workflow
-
-The project is designed to support applications for software engineering, full-stack, backend, AI applications, and internal tools roles.
-
 ## Key Features
 
-### Employee View: 
+**Employee View**
 Employees can submit HR support requests through a simple request form.
-
-Current fields:
-
-* ticket title
-* message
-
 After submission, the backend stores the ticket and applies mock AI classification.
 
-⸻
-
-### HR Team View
-
+**HR Team View**
 HR team members can review submitted tickets and AI-assisted triage results.
 
-Current HR features:
-
-* AI Review Queue
-* Ticket Queue
-* ticket category
-* ticket priority
-* ticket status
-* suggested response draft
-* internal AI note
-* review log
-* category filter
-* priority filter
-* newest / oldest sorting
-
-⸻
-
-### Admin View
+**Admin View**
 
 Admins can view operational ticket stats and filter the admin ticket queue.
 
-Current admin stats:
-
-* total tickets
-* open tickets
-* high priority tickets
-* number of categories
-
-Current admin features:
-
-* admin overview cards
-* filtered ticket queue
-* category filter
-* priority filter
-* newest / oldest sorting
-
-⸻
 
 ## Mock AI Classification
 
 The MVP uses deterministic mock AI logic instead of a real LLM API.
-
 This makes the project easier to run locally because it does not require:
 
 * API keys
@@ -156,7 +101,7 @@ classification_reasoning
 
 ## Tech Stack
 
-Frontend
+**Frontend**
 
 * React
 * TypeScript
@@ -164,7 +109,7 @@ Frontend
 * CSS
 * Responsive dashboard layout
 
-Backend
+**Backend**
 
 * Python
 * FastAPI
@@ -172,7 +117,7 @@ Backend
 * SQLite for MVP development
 * Pydantic schemas
 
-Development Tools
+**Development Tools**
 
 * Git
 * GitHub
@@ -235,6 +180,19 @@ http://localhost:5173
 
 The current Employee / HR Team / Admin views are demo views. In a future version, these will be connected to real JWT authentication and role-based access control.
 
+## Future Improvements
+
+- JWT authentication and role-based access control
+- Real user accounts for Employee, HR Team, and Admin users
+- Backend analytics endpoint for dashboard stats
+- Separate filters for AI Review Queue and Ticket Queue
+- Improved Triage Status progress-bar design
+- BackgroundTasks for AI classification
+- Structured LLM output validation with Pydantic
+- Optional real LLM integration with mock fallback mode
+- Pytest backend tests
+- GitHub Actions CI/CD
+- Deployment to Render, Fly.io, or Railway
 
 ## Important Note
 
