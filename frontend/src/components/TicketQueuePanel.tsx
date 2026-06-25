@@ -1,4 +1,3 @@
-// frontend/src/components/TicketQueuePanel.tsx
 import { TicketTable } from "./TicketTable";
 import type { Ticket } from "../types/ticket";
 
@@ -6,12 +5,14 @@ type TicketQueuePanelProps = {
   title: string;
   description: string;
   tickets: Ticket[];
+  onStatusChange?: (ticketId: number, status: string) => void;
 };
 
 export function TicketQueuePanel({
   title,
   description,
   tickets,
+  onStatusChange,
 }: TicketQueuePanelProps) {
   return (
     <section className="queue-panel">
@@ -24,7 +25,10 @@ export function TicketQueuePanel({
         <span>{tickets.length} tickets</span>
       </div>
 
-      <TicketTable tickets={tickets} />
+      <TicketTable 
+        tickets={tickets} 
+        onStatusChange={onStatusChange} 
+      />
     </section>
   );
 }

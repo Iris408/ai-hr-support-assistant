@@ -11,9 +11,10 @@ import type { CategoryFilter, PriorityFilter, SortOrder } from "../components/Ti
 
 type HRDashboardProps = {
   tickets: Ticket[];
+  onStatusChange: (ticketId: number, status: string) => void;
 };
 
-export function HRDashboard({ tickets }: HRDashboardProps) {
+export function HRDashboard({ tickets, onStatusChange }: HRDashboardProps) {
   const highPriorityCount = tickets.filter(
     (ticket) => ticket.priority === "High"
   ).length;
@@ -148,6 +149,7 @@ export function HRDashboard({ tickets }: HRDashboardProps) {
             title="Ticket Queue"
             description="View submitted tickets by category, priority and current status."
             tickets={filteredTickets} 
+            onStatusChange={onStatusChange}
           />
         </CollapsiblePanel>
       </section>

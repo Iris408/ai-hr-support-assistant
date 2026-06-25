@@ -10,13 +10,13 @@ import type {
   SortOrder,
 } from "../components/TicketFilters";
 import type { Ticket } from "../types/ticket";
-import { TicketTable } from "../components/TicketTable";
 
 type AdminDashboardProps = {
   tickets: Ticket[];
+  onStatusChange: (ticketId: number, status: string) => void;
 };
 
-export function AdminDashboard({ tickets }: AdminDashboardProps) {
+export function AdminDashboard({ tickets, onStatusChange }: AdminDashboardProps) {
   const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("All");
   const [priorityFilter, setPriorityFilter] = useState<PriorityFilter>("All");
   const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
@@ -93,6 +93,7 @@ export function AdminDashboard({ tickets }: AdminDashboardProps) {
           title="Admin Ticket Queue"
           description="Review all submitted tickets by category, priority and current status."
           tickets={filteredTickets}
+          onStatusChange={onStatusChange}
         />
       </CollapsiblePanel>
     </section>

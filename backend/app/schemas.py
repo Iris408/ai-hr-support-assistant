@@ -45,3 +45,6 @@ class TicketRead(BaseModel):
 
     class Config:
         from_attributes = True
+
+class TicketStatusUpdate(BaseModel):
+    status: str         

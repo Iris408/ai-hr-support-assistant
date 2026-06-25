@@ -97,3 +97,20 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.status-select {
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid #d8deea;
+  border-radius: 999px;
+  background: #f8faff;
+  color: #334155;
+  padding: 7px 10px;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.status-select:focus {
+  outline: 3px solid rgba(11, 99, 206, 0.18);
+  border-color: #0b63ce;
+}

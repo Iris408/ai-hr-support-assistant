@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-import { getTickets } from "./api/ticketsApi";
+import { getTickets, updateTicketStatus } from "./api/ticketsApi";
 import { Sidebar } from "./components/Sidebar";
 import { Topbar } from "./components/Topbar";
 import { AdminDashboard } from "./pages/AdminDashboard";
 import { EmployeeDashboard } from "./pages/EmployeeDashboard";
 import { HRDashboard } from "./pages/HRDashboard";
+
 import type { Ticket, UserRole } from "./types/ticket";
 
 function App() {
@@ -27,6 +28,11 @@ function App() {
     loadTickets();
   }, []);
 
+  async function handleStatusChange(ticketId: number, status: string) {
+    await updateTicketStatus(ticketId, status);
+    await loadTickets();
+  }
+
   return (
     <main className="dashboard-shell">
       <Sidebar activeRole={activeRole} onRoleChange={setActiveRole} />
@@ -35,12 +41,25 @@ function App() {
         <Topbar activeRole={activeRole} />
 
         {activeRole === "employee" && (
-          <EmployeeDashboard tickets={tickets} onTicketCreated={loadTickets} />
+          <EmployeeDashboard 
+            tickets={tickets} 
+            onTicketCreated={loadTickets} 
+          />
         )}
 
-        {activeRole === "hr_team" && <HRDashboard tickets={tickets} />}
+        {activeRole === "hr_team" && ( 
+          <HRDashboard 
+            tickets={tickets}
+            onStatusChange={handleStatusChange} 
+          />
+        )}
 
-        {activeRole === "admin" && <AdminDashboard tickets={tickets} />}
+        {activeRole === "admin" && ( 
+          <AdminDashboard
+            tickets={tickets}
+            onStatusChange={handleStatusChange}
+          />
+        )}
       </section>
     </main>
   );

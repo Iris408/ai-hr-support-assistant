@@ -2,13 +2,16 @@ import type { Ticket } from "../types/ticket";
 
 type TicketTableProps = {
   tickets: Ticket[];
+  onStatusChange?: (ticketId: number, status: string) => void;
 };
+
+const statusOptions = ["Open", "In Progress", "Resolved", "Closed"];
 
 function toClassName(value: string) {
   return value.toLowerCase().replace(/\s+/g, "-");
 }
 
-export function TicketTable({ tickets }: TicketTableProps) {
+export function TicketTable({ tickets, onStatusChange }: TicketTableProps) {
   if (tickets.length === 0) {
     return (
       <div className="empty-card compact-empty-card">
@@ -54,11 +57,30 @@ export function TicketTable({ tickets }: TicketTableProps) {
 
               <div className="ticket-meta-item">
                 <span className="ticket-meta-label">Status</span>
-                <span
-                  className={`status-pill status-${toClassName(ticket.status)}`}
-                >
-                  {ticket.status}
-                </span>
+
+                {onStatusChange ? (
+                  <select
+                    className="status-select"
+                    value={ticket.status}
+                    onChange={(event) =>
+                      onStatusChange(ticket.id, event.target.value)
+                    }
+                  >
+                    {statusOptions.map((status) => (
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <span
+                    className={`status-pill status-${toClassName(
+                      ticket.status
+                    )}`}
+                  >
+                    {ticket.status}
+                  </span>
+                )}
               </div>
             </div>
           </article>
