@@ -8,23 +8,23 @@ The current version uses **mock AI classification** to categorise tickets, assig
 
 ## Project Status
 
-**Current stage:** Portfolio-ready MVP
+### Current stage: Portfolio-ready MVP
 
-✅ FastAPI backend  
-✅ PostgreSQL database  
-✅ Docker Compose PostgreSQL setup  
-✅ Alembic database migrations  
-✅ SQLAlchemy ticket model  
-✅ React + TypeScript frontend  
-✅ Employee / HR Team / Admin demo views  
-✅ Mock AI ticket classification  
-✅ AI Review Queue  
-✅ Admin dashboard  
-✅ Ticket status lifecycle: Open, In Progress, Resolved, Closed  
-✅ HR/Admin status update workflow  
-✅ Frontend filtering and sorting  
-✅ Responsive mobile layout  
-✅ GitHub screenshots  
+* ✅ FastAPI backend  
+* ✅ PostgreSQL database  
+* ✅ Docker Compose PostgreSQL setup  
+* ✅ Alembic database migrations  
+* ✅ SQLAlchemy ticket model  
+* ✅ React + TypeScript frontend  
+* ✅ Employee / HR Team / Admin demo views  
+* ✅ Mock AI ticket classification  
+* ✅ AI Review Queue  
+* ✅ Admin dashboard  
+* ✅ Ticket status lifecycle: Open, In Progress, Resolved, Closed  
+* ✅ HR/Admin status update workflow  
+* ✅ Frontend filtering and sorting  
+* ✅ Responsive mobile layout  
+* ✅ GitHub screenshots  
 
 ### Screenshots
 
@@ -48,7 +48,7 @@ The current version uses **mock AI classification** to categorise tickets, assig
       <strong>Admin Dashboard</strong>
     </td>
     <td>
-      <img src="./frontend/public/screenshots/mobile-menu.png" width="200"/>
+      <img src="./frontend/public/screenshots/mobile-menu.png" width="150"/>
       <br/>
       <strong>Safari Mobile Menu</strong>
     </td>
@@ -57,16 +57,15 @@ The current version uses **mock AI classification** to categorise tickets, assig
 
 ## Key Features
 
-**Employee View**
-Employees can submit HR support requests through a simple request form.
-After submission, the backend stores the ticket and applies mock AI classification.
+**Employee View:**
+- Employees can submit HR support requests through a simple request form.
+- After submission, the backend stores the ticket and applies mock AI classification.
 
-**HR Team View**
-HR team members can review submitted tickets and AI-assisted triage results.
+**HR Team View:**
+- HR team members can review submitted tickets and AI-assisted triage results.
 
-**Admin View**
-
-Admins can view operational ticket stats and filter the admin ticket queue.
+**Admin View:**
+- Admins can view operational ticket stats and filter the admin ticket queue.
 
 
 ## Mock AI Classification
@@ -101,28 +100,13 @@ classification_reasoning
 
 ## Tech Stack
 
-**Frontend**
-
-* React
-* TypeScript
-* Vite
-* CSS
-* Responsive dashboard layout
-
-**Backend**
-
-* Python
-* FastAPI
-* SQLAlchemy
-* SQLite for MVP development
-* Pydantic schemas
-
-**Development Tools**
-
-* Git
-* GitHub
-* VS Code
-* Local frontend/backend development servers
+| Area | Technologies |
+|---|---|
+| Frontend | React, TypeScript, Vite, CSS, responsive dashboard layout |
+| Backend | Python, FastAPI, SQLAlchemy, PostgreSQL, Alembic, Pydantic schemas |
+| Database | PostgreSQL for current MVP persistence |
+| DevOps / Tooling | Docker Compose, Git, GitHub, VS Code, local frontend/backend development servers |
+| AI Workflow | Mock AI classification logic for category, priority, suggested response drafts, and internal reasoning notes |
 
 ## Running Locally
 Clone the repository:
