@@ -47,7 +47,7 @@ Current stage: MVP frontend and backend working locally
       <strong>Admin Dashboard</strong>
     </td>
     <td>
-      <img src="./frontend/public/screenshots/mobile-menu.png" width="400"/>
+      <img src="./frontend/public/screenshots/mobile-menu.png" width="100"/>
       <br/>
       <strong>Mobile Menu</strong>
     </td>
