@@ -21,8 +21,8 @@ from app.routes import tickets
 # =========================================
 
 app = FastAPI(
-    title="AI HR Support Assistant API",
-    description="Backend API for an AI-assisted HR support ticket dashboard.",
+    title="AI HR Support Assistant",
+    description="A FastAPI backend for HR support tickets, AI triage and admin review workflows.",
     version="0.1.0",
 )
 
@@ -55,7 +55,8 @@ app.include_router(tickets.router)
 @app.get("/")
 def read_root():
     return {
-        "message": "AI HR Support Assistant API is running",
+        "message": "AI HR Support Assistant API",
+        "status": "running",
         "version": "0.1.0",
     }
 
@@ -69,5 +70,5 @@ def read_root():
 def health_check():
     return {
         "status": "healthy",
-        "service": "ai-hr-support-assistant-backend",
+        "service": "ai-hr-support-assistant",
     }

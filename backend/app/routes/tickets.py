@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.ai_helper import classify_ticket
 from app.database import get_db
 from app.models import Ticket
-from app.schemas import TicketCreate, TicketRead, TicketStatusUpdate, TicketRead
+from app.schemas import TicketCreate, TicketRead, TicketStatusUpdate
 
 router = APIRouter(prefix="/tickets", tags=["Tickets"])
 

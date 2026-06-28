@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 # =========================================
@@ -32,6 +32,8 @@ class TicketClassification(BaseModel):
 # =========================================
 
 class TicketRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     title: str
     message: str
@@ -42,9 +44,6 @@ class TicketRead(BaseModel):
     classification_reasoning: Optional[str]
     created_at: datetime
     updated_at: datetime
-
-    class Config:
-        from_attributes = True
 
 class TicketStatusUpdate(BaseModel):
     status: str         
